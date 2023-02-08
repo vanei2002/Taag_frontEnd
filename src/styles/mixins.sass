@@ -1,0 +1,32 @@
+@use 'variables'
+
+@mixin animation 
+    animation: taag 0.7s ease-in-out
+
+    @keyframes taag
+        0%
+            transform: scale(0.9)
+                
+        100%    
+            transform: scale(1)
+
+@mixin linksButton 
+    margin: 1.5em 
+    width: 8rem
+    color: variables.$color-primary
+    border-radius: 0.5rem
+    text-decoration: none
+    border-radius: 0.5rem
+    background: #fff
+    padding: .5rem
+    display: flex
+    justify-content: center
+        
+    &:active
+        background: #fff
+        color: variables.$color-primary
+        border: 1px solid variables.$color-primary
+        transform: scale(.9)
+        transition: all .3s ease-in-out
+        border-radius: 0.5rem
+        text-decoration: none

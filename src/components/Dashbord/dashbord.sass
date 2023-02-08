@@ -1,0 +1,45 @@
+@use '../../styles/mixins'
+
+.dashbord-items
+    display: flex
+    @include mixins.animation
+
+    .item
+        width: 100%
+        height: 100%
+        background: #fff
+        margin: 2.5em 1.5em 1em 1.5em
+        border-radius: 10px
+        box-shadow: 0 0 10px #0000001a
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+
+        .item-title
+            margin-top: .5em 
+            font-size: 20px
+            font-weight: 600
+            color: #0000008a
+
+        .item-button
+            margin: 1em 0 
+            background: none
+            border: none
+            cursor: pointer
+
+            .item-value
+                margin-top: .5em
+                font-size: 2em
+                font-weight: 600
+        
+        .nameClient
+            background: #fcf9f9
+            width: 100%
+            margin-top: .5em
+
+            .text
+                margin: .5em 1.5em
+                font-size: 1em
+                font-weight: 600
+                color: #0000008a

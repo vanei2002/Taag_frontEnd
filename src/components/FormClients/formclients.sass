@@ -1,0 +1,42 @@
+@use '../../styles/mixins'
+
+.form-container
+    display: flex
+    width: 90%
+    margin: 2em auto
+    flex-wrap: wrap
+    gap: 2em
+
+    .form-client
+        flex: 1
+        background: #fff
+        border-top: 2px solid gray
+        width: 100%
+        margin: 0 auto
+        border-radius: 0 0 10px 10px
+        margin: 2em  1em 0 1em
+        display: flex
+        @include mixins.animation
+
+            
+        .container-inputs
+            width: 90%
+            margin: 0 auto
+            padding: 20px
+                
+            .form-input
+                display: flex
+
+            .form-input-status
+                display: block
+
+            .form-title
+                display: flex
+                color: #000
+                border-bottom: 1px solid #000
+                margin-bottom: 2em
+                width: 60%
+
+                h1
+                    font-size: 1em
+                    padding-left: .5em
