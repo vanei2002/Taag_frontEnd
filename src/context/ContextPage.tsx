@@ -11,13 +11,6 @@ type Taag = {
     logout: () => void;
 }
 
-type NewClient = {
-    nome: string;
-    email: string;
-    Phone: string;
-    address: string;
-}
-
 export const TaagContext = createContext<Taag>(null!);
 
 export const TaagProvider = ({ children }: { children: JSX.Element }) => {
@@ -31,8 +24,6 @@ export const TaagProvider = ({ children }: { children: JSX.Element }) => {
     const onOff = () => setStatusBar(!statusBar)
     const removeLocalStronge = () => localStorage.removeItem('user_token');
     const setLocalStorage = (token: string) => localStorage.setItem('user_token', token)
-    
-
 
     useEffect(()=>{
         const validarwToken = async() => {
@@ -53,31 +44,17 @@ export const TaagProvider = ({ children }: { children: JSX.Element }) => {
 
     
     async function sing(user: string, password: string) {
-
-
         try{
-
             const data: User = await Api.singUser(user, password)
-
             if(data){
-
                 if(data.name == user && data.password == password){
-                    
                     setLocalStorage(data.token);
-                    document.cookie = `user_token=${data.token}`;
-
                     setUser(data);
                     window.location.href = '/home';
                 }
-    
                 return data;
             }
-        }
-
-        catch(err){
-            console.log(err);
-        }
-
+        }catch(err){ console.log(err); }
     }
 
     function logout() {
@@ -85,10 +62,6 @@ export const TaagProvider = ({ children }: { children: JSX.Element }) => {
         removeLocalStronge();
         setUser(null);
     }
-    
-
-
-
 
         return (
             <TaagContext.Provider 

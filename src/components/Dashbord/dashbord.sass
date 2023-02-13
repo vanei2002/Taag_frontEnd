@@ -17,8 +17,8 @@
         align-items: center
 
         .item-title
-            margin-top: .5em 
-            font-size: 20px
+            margin: .5em 0
+            font-size: 1.5rem
             font-weight: 600
             color: #0000008a
 
@@ -37,9 +37,32 @@
             background: #fcf9f9
             width: 100%
             margin-top: .5em
+            animation:  1s ease-in-out 0s 1 slideInFromLeft
+            transition: all .5s ease-in-out
+            border-radius: 10px
 
-            .text
-                margin: .5em 1.5em
-                font-size: 1em
-                font-weight: 600
-                color: #0000008a
+            @keyframes slideInFromLeft
+                0%
+                    transform: perspective( 300px ) rotateX( 45deg )
+                    opacity: 0
+
+                50%
+                    transform: perspective( 300px ) rotateX( -10deg )
+                    opacity: 0.5
+
+                100%
+                    transform: perspective( 300px ) rotateY( 0deg )
+                    opacity: 1
+                
+            .status
+                display: flex
+
+                .text
+                    margin: .5em 1.5em
+                    font-size: 1em
+                    font-weight: 600
+                    color: #0000008a
+
+                &:hover
+                    background: #e6f7ff
+                    cursor: pointer

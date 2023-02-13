@@ -8,6 +8,7 @@ import Providers from "../pages/Providers/Providers"
 import Reports from "../pages/Reports/Reports"
 import Sales from "../pages/Sales/Sales"
 import Settings from "../pages/Settings/Settings"
+import NewProduct from "../pages/Stock/NewProduct/NewProduct"
 import Stock from "../pages/Stock/Stock"
 
 export const AppRouter = createBrowserRouter([
@@ -24,6 +25,11 @@ export const AppRouter = createBrowserRouter([
         element: (<Stock/>)
     },
     {
+        path: "/stock/newproduct",
+        element: (<NewProduct/>)
+
+    },
+    {
         path: "/sales",
         element: (<Sales/>)
     },
@@ -32,7 +38,7 @@ export const AppRouter = createBrowserRouter([
         element: (<Clients/>)
     },
     {
-        path: "/clients/newClient",
+        path: "/clients/newclient",
         element: (<NewClients/>)
     },
     {

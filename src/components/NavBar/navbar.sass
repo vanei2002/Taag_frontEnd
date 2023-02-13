@@ -5,6 +5,25 @@
     min-width: 13.5em
     height: 100vh
     background-color: #fff
+    box-shadow: 0 5.3rem 0.5rem 0.3rem #ccc 
+
+    .logo
+        animation: 6s ease-in-out 0s 1 logo
+
+        @keyframes logo
+            0%
+                transform: perspective( 300px ) rotateY( 45deg )
+
+            25%
+                transform: perspective( 300px ) rotateY( -10deg )
+            
+            50%
+                  transform: perspective( 300px ) rotateY( 10deg )
+
+            100%
+                transform: perspective( 300px ) rotateY(  360deg )
+               
+
     
     img
         width: 60%

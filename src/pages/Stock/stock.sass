@@ -1,4 +1,4 @@
-
+@use '../../styles/mixins'
 
 .container-stock
     display: flex
@@ -7,3 +7,53 @@
 
     .stock
         width: 100%
+    
+        .subnave-stock
+            display: flex
+            justify-content: space-between
+            align-items: center
+
+            .search-stock
+                padding: .8em
+                display: flex
+                align-items: center 
+                border: 1px solid #ccc
+                border-radius: 5px
+                margin: 0 auto
+                width: 30%
+                outline-color: #ccc
+                position: relative
+            
+            .search
+                font-size: 1.5rem
+                position: absolute
+                right: 14em
+                cursor: pointer
+
+            .stock-nav
+                display: flex
+                margin: 1.5em 0 2.5em 1.5em
+                
+                .button-stock
+                    @include mixins.linksButton
+                    border: none
+                    font-size: 1rem
+                    display: flex
+                    align-items: center
+                    cursor: pointer
+                    font-weight: 600
+
+                    svg
+                        margin-right: .5rem
+
+        .button-save
+            @include mixins.linksButton
+            border: none
+            font-size: 1rem
+            display: flex
+            align-items: center
+            padding: .7em 1em
+            cursor: pointer
+            font-weight: 600
+            margin-right: 3em 
+

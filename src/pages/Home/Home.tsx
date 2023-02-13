@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import BarrTaag from "../../components/BarrTaag/BarrTaag";
 import Dashbord from "../../components/Dashbord/Dashbord";
 import NavBar from "../../components/NavBar/NavBar";

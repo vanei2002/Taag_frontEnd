@@ -16,7 +16,8 @@ const FormInput: React.FC <ForminputType> = ({children, type, onChange , id, wid
     <div className='containerForm'>
         <div className='valueForm'>
             <label htmlFor={id}> {children}</label>
-            <input value={value} required type={type} style={{width: width}}  onChange={(e) =>  onChange(e.target.value)} id={id} />
+            <input value={value} 
+            required type={type} style={{width: width}}  onChange={(e) =>  onChange(e.target.value)} id={id} />
         </div>
     </div>
 

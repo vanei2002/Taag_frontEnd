@@ -22,7 +22,7 @@ const NavBar = () => {
     return(
         <nav className="navBar" style={!statusBar ? {position: "absolute", left: "-16em"}: {position: "relative"}} >
 
-            <img src={Logo} alt="" />
+            <img src={Logo} alt="" className="logo"/>
 
             <ul>
                 <Link to='/home'><BiCameraHome/>Inicio</Link>

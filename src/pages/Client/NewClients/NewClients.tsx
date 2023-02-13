@@ -20,7 +20,7 @@ function NewClients() {
         function handleFile() {
             if (execlFile) sendFile(execlFile);
         }
-
+        
         handleFile();
     }, [execlFile]);
     
@@ -29,7 +29,7 @@ function NewClients() {
         <main className="container-newclients">
             <NavBar/>
             <section className="new-clientes">
-                <BarrTaag children="Novo Usuario"/>         
+                <BarrTaag children="Novo Cliete"/>         
                     
                 <div className="newClient-nav">
                     <Link className="button-newclient" to="/clients">Voltar</Link>

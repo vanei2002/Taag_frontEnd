@@ -1,4 +1,4 @@
-import React, {useState , useContext} from 'react'
+import React, {useState , useContext, useEffect} from 'react'
 import { TaagContext } from '../../context/ContextPage'
 import Taag from '../../../public//taag_logo.png'
 import { ButtonTaag } from '../../components/ButtonTaag/ButtonTaag'
@@ -20,6 +20,7 @@ function App() {
   const {sing} = useContext(TaagContext)
 
   async function sendUser(){
+
     if(nameUser === '' || password === '') { 
       setValidInput(true)
       return
@@ -32,6 +33,11 @@ function App() {
       return
     }
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('user_token')
+    if(token) window.location.href = '/home'
+  })
 
   return (
     <main className='main'>

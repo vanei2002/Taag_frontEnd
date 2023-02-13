@@ -18,8 +18,6 @@ const clients = [
     {client: 'Cidade Jardim', dpt: 'Programação', obs: 'Retrofit', supervision: 'Fabio', status: 'Obras concluidas'},
 ];
 
-
-
 const Dashbord = () => {
 
     const status = [
@@ -29,53 +27,71 @@ const Dashbord = () => {
     ]
 
     const [client, setClient] = useState(status)
-    const [open, setOpen] = useState(false)
-
-    function handleOpen(props: any){  setOpen(!open) }
-
+    
     useEffect(() => {
         const detail = () => {
             clients.map((client) => {
                 status.map((status) => {
                     if(client.status === status.name){
                         const value = clients.filter((client) => client.status === status.name).length
-                        status.value = value
+                        return status.value = value
                     }
                 })
             })
         }
 
+
         detail()
         setClient(status)
-    }, [])
+        setObras(status[0].value)
+    },[])
 
+    const [obras, setObras] = useState(0)
+
+    console.log(obras)
+
+    const [openOne, setOpenOne] = useState(true)
+    const [openTwo, setOpenTwo] = useState(true)
+    const [openThree, setOpenThree] = useState(true)
+
+    const handleOpen = (id: number) => {
+        id === 1 ? setOpenOne(!openOne) : null
+        id === 2 ? setOpenTwo(!openTwo) : null
+        id === 3 ? setOpenThree(!openThree) : null
+    }
+    
     return (
-            <div className="dashbord-items">
+            <section className="dashbord-items">
 
                 {status.map((item) => (
-                <div className="item" key={item.id} style={{borderLeft: `8px solid ${item.color}`}}> 
+                    <div className="item" key={item.id} style={{borderLeft: `8px solid ${item.color}`}}> 
 
-                    <h1 className="item-title">{item.name}</h1>
-                    
-                    <button className="item-button" onClick={handleOpen} key={item.id}>
-                        <span className="item-value" style={{color: item.color}}>
-                            {client.map((status) => { if(status.name === item.name) return status.value })}
-                        </span>
-                    </button>
-                    
-                    <section className="nameClient" style={ open ? {display: ' block'}: {display: ' none' }}>
-                        {clients.map( client => 
-                             client.status === item.name ? (
-                                <div key={client.client} className="status">
-                                    <p className="text">{client.client}</p>
-                                </div>
-                             ): (null)
-                        )}
-                    </section>
+                        <h1 className="item-title">{item.name}</h1>
+                        
+                        <button className="item-button" onClick={() =>handleOpen(item.id)} key={item.id}>
+                            <span className="item-value" style={{color: item.color}}>
+                                {client.map((status) => { if(status.name === item.name) return status.value })}
+                            </span>
+                        </button>
+                        
+                        <section className="nameClient" style={ 
+                            openOne && item.id == 1 || 
+                            openTwo && item.id == 2 || 
+                            openThree && item.id == 3? 
+                            {display: ' block',}:{display: ' none',}}>
 
-                 </div>
+                            {clients.map( client => (
+                                client.status === item.name && (
+                                    <div key={client.client} className="status">
+                                        <p className="text">{client.client}</p>
+                                    </div>
+                                ))
+                            )}
+                        </section>
+
+                    </div>
                 ))}
-            </div>
+            </section>
         )
 }
 
