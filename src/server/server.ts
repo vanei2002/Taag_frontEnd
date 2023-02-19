@@ -8,7 +8,6 @@ export const Server = () => ({
 
     singUser: async (name: string, password: string) => {
         try{
-            
             const res = await api.post('/login', {name, password})
             console.log(res)
             return res.data

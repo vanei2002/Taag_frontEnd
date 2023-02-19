@@ -1,14 +1,13 @@
 
-
-
-interface Column {
+// Table Product taag frontEnd
+interface ColumnProduct {
     id: 'product' | 'model' | 'marca' | 'nserie' | 'heritage' | 'invoice' | 'nota' | 'order' | 'status';
     label: string;
     minWidth?: number;
     align?: 'center' | 'right' | 'left';
 }
 
-export const columnsProduct: readonly Column[] = [
+export const columnsProduct: readonly ColumnProduct [] = [
     { id: 'product', label: 'Produto', minWidth: 100, align: 'center'},
     { id: 'model', label: 'Modelo', minWidth: 100, align: 'center'},
     { id: 'marca', label: 'Marca', minWidth: 100, align: 'center'},
@@ -19,7 +18,6 @@ export const columnsProduct: readonly Column[] = [
     { id: 'order', label: 'N Pedido', minWidth: 100, align: 'center',},
     { id: 'status', label: 'Status', minWidth: 100, align: 'center', }
 ];
-
 
 export const statusProduct = [
     {id: 1, status: 'Em estoque'},
@@ -37,3 +35,34 @@ export const statusProduct = [
     {id: 13, status: 'Em desuso'},
     {id: 14, status: 'Em desativação'},        
 ]
+
+// Table Clients taag frontEnd
+interface ColumnClient {
+    id: 'name' | 'email' | 'phone' | 'address' | 'cep' | 'state' | 'city' | 'department' | 'description' | 'responsible' | 'work';
+    label: string;
+    minWidth?: number;
+    align?: 'center' | 'right' | 'left';
+}
+
+ export const columnsClients: readonly ColumnClient[] = [
+    { id: 'name', label: 'Cliente', minWidth: 200, align: 'center'},
+    { id: 'email', label: 'Email', minWidth: 150, align: 'center'},
+    { id: 'phone', label: 'Telefone', minWidth: 120, align: 'center'},
+    { id: 'address', label: 'Endereço', minWidth: 220, align: 'center'},
+    { id: 'cep', label: 'CEP', minWidth: 80, align: 'center'},
+    { id: 'state', label: 'Estado', minWidth: 80, align: 'center'},
+    { id: 'city', label: 'Cidade', minWidth: 80, align: 'center'},
+    { id: 'department', label: 'Departamento', minWidth: 100, align: 'center'},
+    { id: 'description', label: 'Observações', minWidth: 160, align: 'center'},
+    { id: 'responsible', label: 'Responsavel', minWidth: 100, align: 'center',},
+    { id: 'work', label: 'Obras', minWidth: 100, align: 'center',}
+  ];
+
+// Table Dashbord taag frontEnd
+
+export const status = [
+    {id: 1, name: 'Obras em andamentos', value: 0, color: 'red'},
+    {id: 2, name: 'Vistorias', value: 0, color: 'blue' },
+    {id: 3, name: 'Obras concluidas', value: 0, color: '#008000'},
+]
+

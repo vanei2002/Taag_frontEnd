@@ -9,6 +9,10 @@ type Taag = {
     statusBar: boolean;
     onOff: () => void;
     logout: () => void;
+    nameUser: string;
+    setNameUser: (name: string) => void;
+    password: string;
+    setPassword: (password: string) => void;
 }
 
 export const TaagContext = createContext<Taag>(null!);
@@ -19,13 +23,15 @@ export const TaagProvider = ({ children }: { children: JSX.Element }) => {
 
     const [user, setUser] = useState<User | null>(null)
     const [statusBar, setStatusBar] = useState<boolean>(true);
-
+    const [nameUser, setNameUser] = useState('')
+    const [password , setPassword] = useState('')
 
     const onOff = () => setStatusBar(!statusBar)
     const removeLocalStronge = () => localStorage.removeItem('user_token');
     const setLocalStorage = (token: string) => localStorage.setItem('user_token', token)
 
-    useEffect(()=>{
+    useEffect( () =>{
+
         const validarwToken = async() => {
             const token = localStorage.getItem('user_token')
             if(token){ 
@@ -37,12 +43,17 @@ export const TaagProvider = ({ children }: { children: JSX.Element }) => {
                     setUser(null)
                 }
             }
-        }
-
+        };
         validarwToken();
-    }, [])
 
-    
+        addEventListener('keypress', (e) => {
+            if(e.key == 'Enter') {
+                sing(nameUser, password);
+            }
+        });
+
+    })
+
     async function sing(user: string, password: string) {
         try{
             const data: User = await Api.singUser(user, password)
@@ -73,6 +84,10 @@ export const TaagProvider = ({ children }: { children: JSX.Element }) => {
                 onOff,
                 setStatusBar,
                 logout,
+                nameUser,
+                setNameUser,
+                password,
+                setPassword,
             }}>
 
                 {children}

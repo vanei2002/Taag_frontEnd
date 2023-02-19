@@ -7,24 +7,23 @@ import {SiMicrosoftexcel} from "react-icons/si";
 import "./clients.sass";
 import { Link } from "react-router-dom";
 import { TaagClients } from "../../context/TaagClients";
+import { DataClient } from "../../types/DataClient";
 
 
 function Clients (){
 
-    const {rows, setResult } = useContext(TaagClients);
+    const {setResult, clientsAll} = useContext(TaagClients);
 
-    function search(text: string){
-        const result = rows.filter((row) => {
-            return row.client.toLowerCase().includes(text.toLowerCase());
+    async function search(text: string){
+        const result = await clientsAll.filter((row: DataClient) => {
+            return row.name.toLowerCase().includes(text.toLowerCase());
         });
       setResult(result);
     }
 
     useEffect(() => {
-        setResult(rows);
-    },[]);
-
-
+        setResult(clientsAll);
+    }, [clientsAll]);
 
     return (
         <main className="container-clients">

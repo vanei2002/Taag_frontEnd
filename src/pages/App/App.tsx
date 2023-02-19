@@ -11,13 +11,12 @@ import './app.sass'
 
 function App() {
 
-  const [nameUser, setNameUser] = useState('')
-  const [password , setPassword] = useState('')
+
 
   const [validInput, setValidInput] = useState(false)
   const [validUser, setValidUser] = useState(false)
 
-  const {sing} = useContext(TaagContext)
+  const {sing,nameUser, setNameUser, password, setPassword  } = useContext(TaagContext)
 
   async function sendUser(){
 

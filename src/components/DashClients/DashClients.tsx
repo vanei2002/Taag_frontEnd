@@ -7,30 +7,16 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-
+import { columnsClients } from '../../status';
 
 import './dashclients.sass'
 import { TaagClients } from '../../context/TaagClients';
-
-interface Column {
-    id: 'client' | 'dpt' | 'obs' | 'supervison' ;
-    label: string;
-    minWidth?: number;
-    align?: 'center' | 'right' | 'left';
-}
-
-const columns: readonly Column[] = [
-  { id: 'client', label: 'Cliente', minWidth: 70, align: 'center'},
-  { id: 'dpt', label: 'Departamento', minWidth: 100, align: 'center'},
-  { id: 'obs', label: 'Observações', minWidth: 170, align: 'center'},
-  { id: 'supervison', label: 'Responsavel | Atual', minWidth: 100, align: 'center',},
-];
 
 
 const DashClients = () => {
     
     const {result} = React.useContext(TaagClients);
-
+    
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
   
@@ -42,40 +28,46 @@ const DashClients = () => {
     };
   
     return(
-        <Paper className='conatiner-dashclient' sx={{borderRadius: '1em'}} >
-            <TableContainer className='table-container' sx={{borderRadius: '1em'}}>
+        <Paper className='conatiner-dashclient' sx={{borderRadius: '15px'}}>
+            <TableContainer className='table-container'sx={{borderRadius: '15px'}}>
                 <Table className='table-dashclient'>
                     <TableHead className='header-dashclient'>
                         <TableRow>
-                            {columns.map((column) => (
+                            {columnsClients.map((column) => (
                             <TableCell
                                 key={column.label}
                                 align={column.align}
                                 style={{ minWidth: column.minWidth,  }}
+                                className='header-dashclient' 
                             >
-                                <h3>{column.label}</h3>
+                                <h3 >{column.label}</h3>
                             </TableCell>
                             ))}
                         </TableRow>
                     </TableHead>
                     
                     <TableBody>                      
-                        {result.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) .map((row) =>
-                            <TableRow hover role="checkbox" tabIndex={-1} key={row.client}>
-                                {columns.map((column) => {
-                                    const value = row[column.id];
-                                    return (
-                                        <TableCell  key={column.id} align={column.align}>
-                                            {value}
-                                        </TableCell>
-                                    );
-                                })}
-                            </TableRow>
+                        {result.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) .map((row: NewClient) =>{
+                            return (
+                                <TableRow hover role="checkbox" tabIndex={-1} key={row.name}>
+                                    {columnsClients.map((column) => {
+                                        const value = row[column.id];
+                                        return (
+                                            <TableCell  
+                                            className='body-dashclient'
+                                            key={column.id} align={column.align}>
+                                                {value}
+                                            </TableCell>
+                                        );
+                                    })}
+                                </TableRow>
+                            )
+                        }
                         )}
 
                         {result.length === 0 && ( 
                             <TableRow>
-                                <TableCell colSpan={6} align='center'>
+                                <TableCell colSpan={20} align='center'>
                                     <h3>Nenhum cliente encontrado</h3>
                                 </TableCell>
                             </TableRow>
@@ -90,7 +82,6 @@ const DashClients = () => {
                 page={page} onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
-            
         </Paper>
     )
 }

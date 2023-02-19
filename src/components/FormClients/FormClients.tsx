@@ -5,6 +5,7 @@ import {MdConstruction} from "react-icons/md";
 import './formclients.sass';
 import FormInput from "../../components/FormInput/FormInput";
 import { ButtonTaag } from "../../components/ButtonTaag/ButtonTaag";
+import { status } from '../../status';
 
 
 const FormClients = () => {
@@ -20,20 +21,22 @@ const FormClients = () => {
     const [department, setDepartment] =  useState<string>("");
     const [responsible, setResponsible] =  useState<string>("");
     const [number, setNumber] =  useState<string>("");
+    const [work, setWork] =  useState<any>(); //corrigirr type
 
     const {sendClient} = useContext(TaagClients);
 
     const data = {
-        client:{name, email, phone, address, cep, city, state, number},
-        project:{description, department, responsible}
+        name, email, phone, address, cep, city, state, number,
+        description, department, responsible, work
     };
+
 
     function sendNewClient(){
 
-        if(name !== "" && email !== "" && phone !== "" && address !== "" && cep !== "" && number !== "" &&
-           city !== "" && state !== "" && description !== "" && department !== "" && responsible !== "")
+        if(name && email && phone && address && cep && city && state && number && description && department && responsible && work)
         {
             sendClient(data);
+            console.log(data);
             return
         }
            
@@ -49,6 +52,7 @@ const FormClients = () => {
                 setAddress(data.logradouro);
                 setCity(data.localidade);
                 setState(data.uf); 
+                setCep(data.cep);
             })
            }catch(err){
                console.log("Erro ao buscar cep" + err);
@@ -97,6 +101,19 @@ const FormClients = () => {
                                 <FormInput type="text" id="description" onChange={setDescription} width="60%">Descrição</FormInput>
                                 <FormInput type="text" id="department" onChange={setDepartment} width="54%">Departamento</FormInput>
                                 <FormInput type="text" id="responsible" onChange={setResponsible} width="56.5%">Responsavel</FormInput>
+                                
+                                <label className='select-status'  htmlFor="work">Status Obra
+                                    <select name='work' onChange={(e) => {setWork(e.target.value)}} >
+                                        {status.map((e) =>(
+                                            <option 
+                                            value={e.name} 
+                                            key={e.id}>
+                                                {e.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </label>
+                                
                             </div>
                         </div>
                     </div>  
