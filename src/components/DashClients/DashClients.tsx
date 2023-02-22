@@ -28,7 +28,7 @@ const DashClients = () => {
     };
   
     return(
-        <Paper className='conatiner-dashclient' sx={{borderRadius: '15px'}}>
+        <Paper className='conatiner-dashclient' sx={{borderRadius: '15px', }}>
             <TableContainer className='table-container'sx={{borderRadius: '15px'}}>
                 <Table className='table-dashclient'>
                     <TableHead className='header-dashclient'>
@@ -49,7 +49,9 @@ const DashClients = () => {
                     <TableBody>                      
                         {result.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) .map((row: NewClient) =>{
                             return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.name}>
+                                <TableRow 
+                                sx={{textAlign: 'left', }}
+                                hover role="checkbox" tabIndex={-1} key={row.name}>
                                     {columnsClients.map((column) => {
                                         const value = row[column.id];
                                         return (

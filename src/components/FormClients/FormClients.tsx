@@ -30,7 +30,6 @@ const FormClients = () => {
         description, department, responsible, work
     };
 
-
     function sendNewClient(){
 
         if(name && email && phone && address && cep && city && state && number && description && department && responsible && work)

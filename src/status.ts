@@ -45,17 +45,17 @@ interface ColumnClient {
 }
 
  export const columnsClients: readonly ColumnClient[] = [
-    { id: 'name', label: 'Cliente', minWidth: 200, align: 'center'},
-    { id: 'email', label: 'Email', minWidth: 150, align: 'center'},
+    { id: 'name', label: 'Cliente', minWidth: 180, align: 'center'},
+    { id: 'email', label: 'Email', minWidth: 180, align: 'center'},
     { id: 'phone', label: 'Telefone', minWidth: 120, align: 'center'},
     { id: 'address', label: 'Endereço', minWidth: 220, align: 'center'},
-    { id: 'cep', label: 'CEP', minWidth: 80, align: 'center'},
-    { id: 'state', label: 'Estado', minWidth: 80, align: 'center'},
-    { id: 'city', label: 'Cidade', minWidth: 80, align: 'center'},
-    { id: 'department', label: 'Departamento', minWidth: 100, align: 'center'},
-    { id: 'description', label: 'Observações', minWidth: 160, align: 'center'},
+    { id: 'cep', label: 'CEP', minWidth: 90, align: 'center'},
+    { id: 'state', label: 'Estado', minWidth: 50, align: 'center'},
+    { id: 'city', label: 'Cidade', minWidth: 120, align: 'center'},
+    { id: 'department', label: 'Departamento', minWidth: 120, align: 'center'},
+    { id: 'description', label: 'Observações', minWidth: 150, align: 'center'},
     { id: 'responsible', label: 'Responsavel', minWidth: 100, align: 'center',},
-    { id: 'work', label: 'Obras', minWidth: 100, align: 'center',}
+    { id: 'work', label: 'Obras', minWidth: 180, align: 'center',}
   ];
 
 // Table Dashbord taag frontEnd

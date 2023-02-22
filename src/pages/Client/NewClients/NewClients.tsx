@@ -8,17 +8,54 @@ import "./newclients.sass";
 
 import { Link } from "react-router-dom";
 import { TaagClients } from "../../../context/TaagClients";
+import { DataClient } from "../../../types/DataClient";
 
 
 function NewClients() {
 
-    const [execlFile, setExeclFile] = useState<FileList | null>();
-
+    const [execlFile, setExeclFile] = useState<FileList | null>(null);
     const {sendFile} = useContext(TaagClients);
     
+
+
     useEffect(() => {
+        async function readerFile () {  
+
+            const csvFile = execlFile?.item(0);
+            const reader = new FileReader();
+
+            reader.onload = async (e: ProgressEvent<FileReader>) => {
+                const text = e.target?.result;
+                const lines = text?.toString().split("\n");
+
+                const [header, ...linesArray] = lines || [];
+
+                for (let line of linesArray) {
+                    const splitFiles = line.split(",").map((item) => item.slice(1, -1));
+
+                    const data: DataClient  = {
+                        name: splitFiles[0],
+                        email: splitFiles[1],
+                        phone: splitFiles[2],
+                        address: splitFiles[3],
+                        cep: splitFiles[4],
+                        city: splitFiles[5],
+                        state: splitFiles[6],
+                        number: splitFiles[7],
+                        department: splitFiles[8],
+                        work: splitFiles[9],
+                        description: splitFiles[10],
+                        responsible: splitFiles[11],
+                    }
+
+                    sendFile(data);
+                }
+            };
+            reader.readAsText(csvFile!);
+        }
+
         function handleFile() {
-            if (execlFile) sendFile(execlFile);
+            if (execlFile) readerFile();
         }
         
         handleFile();

@@ -7,7 +7,7 @@ const client = axios.create({
 
 export const GetClients = () => ({
 
-    sendFile : async (file: any) => {
+    sendFile : async (file: DataClient) => {
         try{
             const response = await client.post("/clients/excel", file);
             return response.data;

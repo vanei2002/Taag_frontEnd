@@ -5,7 +5,7 @@ import { TableProduct } from '../types/TableProduct';
 
 interface TaagClientsInterface {
     sendClient: (clients: DataClient) => Promise<void>;
-    sendFile: (file: FileList) => Promise<void>;
+    sendFile: (file: DataClient) => Promise<void>;
     result: DataClient[];
     setResult: (result: DataClient[]) => void;
     resultProduct: any;
@@ -47,9 +47,10 @@ export const TaagClientsProvider = ({ children }: { children: JSX.Element }) => 
     }, []);
 
     
-    async function sendFile (file: FileList) {
+    async function sendFile (file: DataClient) {
         try{
-            const excel  = await data.sendFile(file.item(0));
+            console.log(file);
+            const excel  = await data.sendFile(file);
             return excel;
 
         } catch(err){
