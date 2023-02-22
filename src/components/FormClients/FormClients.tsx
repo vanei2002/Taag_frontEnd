@@ -35,8 +35,8 @@ const FormClients = () => {
         if(name && email && phone && address && cep && city && state && number && description && department && responsible && work)
         {
             sendClient(data);
-            console.log(data);
-            return
+            console.log(data)
+            return document.location.reload();
         }
            
         alert("Preencha todos os campos");

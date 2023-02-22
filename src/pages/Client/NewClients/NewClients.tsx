@@ -31,7 +31,9 @@ function NewClients() {
                 const [header, ...linesArray] = lines || [];
 
                 for (let line of linesArray) {
-                    const splitFiles = line.split(",").map((item) => item.slice(1, -1));
+                    const splitFiles = line.split(",").map((item) => {
+                        return item.replace(/"/g, "");
+                    });
 
                     const data: DataClient  = {
                         name: splitFiles[0],
