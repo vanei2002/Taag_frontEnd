@@ -51,6 +51,10 @@ function NewClients() {
                     }
 
                     sendFile(data);
+                    
+                    setInterval(() => {
+                        document.location.reload();
+                    } ,2000);
                 }
             };
             reader.readAsText(csvFile!);
