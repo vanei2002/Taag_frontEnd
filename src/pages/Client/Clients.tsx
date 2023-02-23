@@ -4,10 +4,14 @@ import NavBar from "../../components/NavBar/NavBar";
 import  DashClients  from "../../components/DashClients/DashClients";
 import {SiMicrosoftexcel} from "react-icons/si";
 
-import "./clients.sass";
 import { Link } from "react-router-dom";
 import { TaagClients } from "../../context/TaagClients";
 import { DataClient } from "../../types/DataClient";
+import { GetClients } from "../../server/clients";
+
+import "./clients.sass";
+
+
 
 
 function Clients (){
@@ -19,6 +23,26 @@ function Clients (){
             return row.name.toLowerCase().includes(text.toLowerCase());
         });
       setResult(result);
+    }
+
+    async function exportExcel(){
+        const file = await GetClients().findClients();  
+        const csv = await file.map((row: DataClient) => {
+            return Object.values(row).join(",");
+        }   
+        ).join("");
+
+        const csvData = new Blob([csv], {type: "text/csv"});
+        const csvUrl = URL.createObjectURL(csvData);
+        const link = document.createElement("a");
+
+        console.log(csvData);
+        link.setAttribute("target", "_blank");
+        link.setAttribute("download", "Tabela-MongoDB.csv");
+        document.body.appendChild(link);
+        
+        // link.click();
+
     }
 
     useEffect(() => {
@@ -33,8 +57,8 @@ function Clients (){
 
                 <div className="subnave-client">
                     <div className="client-nav">
-                        <Link className="button-client" to="/clients/newclient">Novo Cliente</Link>
-                        <button className="button-client">
+                        <Link className="button-client" to="/clients/newclient" >Novo Cliente</Link>
+                        <button className="button-client" onClick={exportExcel}>
                             <SiMicrosoftexcel  size={20} color="#03460e" />
                             <span>Exportar</span> 
                         </button>

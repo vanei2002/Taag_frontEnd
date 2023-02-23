@@ -17,6 +17,16 @@ export const GetClients = () => ({
         }
     },
 
+    receiveFile : async () => {
+        try{
+            const response = await client.get("/clients/export");
+            return response.data;
+        
+        }catch(err){
+            console.log(err);
+        }
+    },
+
     findClients : async () => {
         try{
             const response = await client.get("/clients/clients");
