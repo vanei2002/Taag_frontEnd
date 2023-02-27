@@ -12,6 +12,8 @@ interface TaagClientsInterface {
     setResultProduct: (resultProduct: any) => void;
     tableProduct: TableProduct[];
     clientsAll: any;
+    deleteClients: any;
+    setDeleteClients: (deleteClients: any) => void;
 }
 interface Data {
     client: string;
@@ -31,6 +33,8 @@ export const TaagClientsProvider = ({ children }: { children: JSX.Element }) => 
         {product: 'nobleak', model: 'Nobreak sm 1200va Bivolt', marca:'SMS', nserie: '123456789', heritage:'TAAg', invoice:'notafiscal', nota:'produto ok', order:'1234', status: '' },
         {product: 'Power Balun', model: 'Onix Hd 8000 4k 8 Canais', marca:'NIX', nserie: '123456789', heritage:'TAAg', invoice:'notafiscal', nota:'produto ok', order:'1234', status: '' },
     ];
+
+    const [deleteClients, setDeleteClients] = React.useState<DataClient>({} as DataClient);
 
 
     const [clientsAll , setClientsAll] = React.useState<DataClient[]>([]);
@@ -79,6 +83,8 @@ export const TaagClientsProvider = ({ children }: { children: JSX.Element }) => 
                 resultProduct,
                 setResultProduct,
                 clientsAll,
+                deleteClients,
+                setDeleteClients
             }}>
 
             {children}

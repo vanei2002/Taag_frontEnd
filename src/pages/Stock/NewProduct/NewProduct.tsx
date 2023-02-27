@@ -5,8 +5,11 @@ import NavBar from '../../../components/NavBar/NavBar';
 import {SiMicrosoftexcel} from "react-icons/si";
 
 import "../NewProduct/newproduct.sass";
+import FormProduct from '../../../components/FormProduct/FormProduct';
 
 function NewProduct(){
+
+
     return (
         <main className='container-newproduct'>
 
@@ -25,8 +28,9 @@ function NewProduct(){
                             <input type="file" id="file" />
                         </label>
                     </button>
-
                 </div>
+
+                <FormProduct/>
             </section>
 
             <footer>

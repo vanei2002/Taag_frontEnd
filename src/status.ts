@@ -1,7 +1,7 @@
 
 // Table Product taag frontEnd
 interface ColumnProduct {
-    id: 'product' | 'model' | 'marca' | 'nserie' | 'heritage' | 'invoice' | 'nota' | 'order' | 'status';
+    id: 'product' | 'model' | 'marca' | 'nserie' | 'heritage' | 'invoice' | 'nota' | 'order' | 'status' | 'guarantee' | 'provider' | 'obs';
     label: string;
     minWidth?: number;
     align?: 'center' | 'right' | 'left';
@@ -16,7 +16,11 @@ export const columnsProduct: readonly ColumnProduct [] = [
     { id: 'invoice', label: 'N Fiscal', minWidth: 100, align: 'center',},
     { id: 'nota', label: 'Nota', minWidth: 100, align: 'center',},
     { id: 'order', label: 'N Pedido', minWidth: 100, align: 'center',},
-    { id: 'status', label: 'Status', minWidth: 100, align: 'center', }
+    { id: 'guarantee', label: 'Garantia', minWidth: 100, align: 'center',},
+    { id: 'provider', label: 'Fornecedor', minWidth: 100, align: 'center',},
+    { id: 'status', label: 'Status', minWidth: 100, align: 'center', },
+    { id: 'obs', label: 'Observações', minWidth: 100, align: 'center',},
+
 ];
 
 export const statusProduct = [

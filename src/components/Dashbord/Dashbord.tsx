@@ -5,8 +5,6 @@ import { DataClient } from "../../types/DataClient";
 
 import "./dashbord.sass";
 
-
-
 const Dashbord = () => {
 
     const {clientsAll} = useContext(TaagClients);

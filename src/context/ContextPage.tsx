@@ -13,6 +13,10 @@ type Taag = {
     setNameUser: (name: string) => void;
     password: string;
     setPassword: (password: string) => void;
+    open: boolean;
+    setOpen: (open: boolean) => void;
+    openModal: boolean;
+    setOpenModal: (open: boolean) => void;
 }
 
 export const TaagContext = createContext<Taag>(null!);
@@ -20,6 +24,9 @@ export const TaagContext = createContext<Taag>(null!);
 export const TaagProvider = ({ children }: { children: JSX.Element }) => {
 
     const Api = Server();
+
+    const [open, setOpen] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
     const [user, setUser] = useState<User | null>(null)
     const [statusBar, setStatusBar] = useState<boolean>(true);
@@ -88,6 +95,10 @@ export const TaagProvider = ({ children }: { children: JSX.Element }) => {
                 setNameUser,
                 password,
                 setPassword,
+                open,
+                setOpen,
+                openModal,
+                setOpenModal
             }}>
 
                 {children}

@@ -47,4 +47,15 @@ export const GetClients = () => ({
         }
     },    
 
+    deleteClient: async (id: string) => {
+        try{
+            console.log(id);
+            const response = await client.delete(`/clients/delete/${id}`);
+            return response.data;
+
+        }catch(err){
+            console.log(err);
+        }
+    }
+
 })

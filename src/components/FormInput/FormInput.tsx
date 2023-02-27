@@ -6,9 +6,9 @@ type ForminputType = {
     children: string;
     type: string;
     onChange: (value: any) => void;
-    id: string;
+    id?: string;
     width?: string;
-    value?: string;
+    value?: any;
 };
 
 const FormInput: React.FC <ForminputType> = ({children, type, onChange , id, width , value}) => 

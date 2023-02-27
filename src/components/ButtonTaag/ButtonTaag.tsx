@@ -4,14 +4,17 @@ import '../ButtonTaag/buttontaag.sass'
 
 type Button = {
     children: string;
-    onclick: () => void;
+    onclick?: () => void;
+    typeButton?: "button" | "submit" | "reset" | undefined;
 }
 
 
-export const ButtonTaag: React.FC <Button> = ({children, onclick}) =>
+export const ButtonTaag: React.FC <Button> = ({children, onclick, typeButton}) =>
 
     <div className="buttonTaag">
-        <button onClick={onclick}>
+        <button 
+        type={typeButton}
+        onClick={onclick}>
             {children} 
         </button>
     </div>
