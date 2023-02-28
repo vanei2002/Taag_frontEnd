@@ -7,15 +7,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { TaagClients } from '../../context/TaagClients';
 import { statusProduct } from '../../status';
 import { columnsProduct } from '../../status';
 
 import './tableproduct.sass';
+import { TaagContext } from '../../context/TaagContext';
 
 const TableProduct = () => {
 
-    const {resultProduct} = React.useContext(TaagClients);
+    const {resultProduct} = React.useContext(TaagContext);
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);

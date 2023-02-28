@@ -1,5 +1,5 @@
 import React, { useEffect , useContext, useState } from "react";
-import { TaagClients } from "../../context/TaagClients";
+import { TaagContext } from "../../context/TaagContext";
 import { status } from "../../status";
 import { DataClient } from "../../types/DataClient";
 
@@ -7,7 +7,7 @@ import "./dashbord.sass";
 
 const Dashbord = () => {
 
-    const {clientsAll} = useContext(TaagClients);
+    const {clientsAll} = useContext(TaagContext);
     const [client, setClient] = useState(status);
 
     const [openOne, setOpenOne] = useState(true);

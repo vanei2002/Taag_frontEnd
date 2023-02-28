@@ -1,6 +1,6 @@
 import  Modal  from "react-modal";
 import React, {useContext} from "react";
-import { TaagContext } from "../../context/ContextPage";
+import { TaagContext } from "../../context/TaagContext";
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 
 import './modal.sass'

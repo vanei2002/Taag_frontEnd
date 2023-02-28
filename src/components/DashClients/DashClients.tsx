@@ -8,20 +8,19 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { columnsClients } from '../../status';
-import { TaagClients } from '../../context/TaagClients';
 import { DataClient } from '../../types/DataClient';
-import { TaagContext } from '../../context/ContextPage';
+import { TaagContext } from '../../context/TaagContext';
 import ModalDelete from '../Modal/Modal';
-import { GetClients } from '../../server/clients';
 
 
 import './dashclients.sass'
 import ModalForm from '../ModalFormCliets/ModalForm';
+import { Server } from '../../server/server';
 
 const DashClients = () => {
 
     const {setOpen} = useContext(TaagContext);
-    const {deleteClients,setDeleteClients , result} = useContext(TaagClients);
+    const {deleteClients,setDeleteClients , result} = useContext(TaagContext);
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -40,7 +39,7 @@ const DashClients = () => {
     }
 
     async function deleteClient(){
-        const data = GetClients();
+        const data = Server();
         await data.deleteClient(deleteClients._id);
         setOpen(false)
         document.location.reload();

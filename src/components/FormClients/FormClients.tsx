@@ -1,11 +1,11 @@
 import React, {useContext, useState , useEffect} from 'react';
-import { TaagClients } from "../../context/TaagClients";
 import {MdOutlinePersonalInjury} from "react-icons/md";
 import {MdConstruction} from "react-icons/md";
 import './formclients.sass';
 import FormInput from "../../components/FormInput/FormInput";
 import { ButtonTaag } from "../../components/ButtonTaag/ButtonTaag";
 import { status } from '../../status';
+import { TaagContext } from '../../context/TaagContext';
 
 
 const FormClients = () => {
@@ -23,7 +23,7 @@ const FormClients = () => {
     const [number, setNumber] =  useState<string>("");
     const [work, setWork] =  useState<any>(); //corrigirr type
 
-    const {sendClient} = useContext(TaagClients);
+    const {sendClient} = useContext(TaagContext);
 
     const data = {
         name, email, phone, address, cep, city, state, number,

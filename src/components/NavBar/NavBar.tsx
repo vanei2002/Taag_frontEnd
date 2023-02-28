@@ -14,7 +14,7 @@ import {FcSettings} from 'react-icons/fc'
 
 import Logo from '../../../public/taag_logo.png'
 import './navbar.sass'
-import { TaagContext } from "../../context/ContextPage";
+import { TaagContext } from "../../context/TaagContext";
 
 const NavBar = () => {
     const {statusBar , logout} = useContext(TaagContext)

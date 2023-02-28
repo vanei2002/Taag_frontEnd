@@ -1,6 +1,6 @@
 import { Modal } from "@material-ui/core";
 import React, {useContext, useState} from "react";
-import { TaagContext } from "../../context/ContextPage";
+import { TaagContext } from "../../context/TaagContext";
 import { status } from "../../status";
 import FormInput from "../FormInput/FormInput";
 

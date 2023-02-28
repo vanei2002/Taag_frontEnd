@@ -1,8 +1,8 @@
-import { createContext, useEffect, useState } from "react";
-import { Server } from "../server/server";
 import { User } from "../types/User";
+import { DataClient } from '../types/DataClient';
+import { DataProduct } from "../types/TableProduct";
 
-type Taag = {
+export type TaagTypesPages = {
     sing: (user: string, password: string) => void;
     user: User | null;
     setStatusBar: (status: boolean) => void;
@@ -17,91 +17,15 @@ type Taag = {
     setOpen: (open: boolean) => void;
     openModal: boolean;
     setOpenModal: (open: boolean) => void;
+    sendClient: (clients: DataClient) => Promise<void>;
+    sendFile: (file: DataClient) => Promise<void>;
+    result: DataClient[];
+    setResult: (result: DataClient[]) => void;
+    resultProduct: any;
+    setResultProduct: (resultProduct: any) => void;
+    clientsAll: any;
+    deleteClients: any;
+    setDeleteClients: (deleteClients: any) => void;
+    tableProduct: DataProduct[]
 }
 
-export const TaagContext = createContext<Taag>(null!);
-
-export const TaagProvider = ({ children }: { children: JSX.Element }) => {
-
-    const Api = Server();
-
-    const [open, setOpen] = useState(false);
-    const [openModal, setOpenModal] = useState(false);
-
-    const [user, setUser] = useState<User | null>(null)
-    const [statusBar, setStatusBar] = useState<boolean>(true);
-    const [nameUser, setNameUser] = useState('')
-    const [password , setPassword] = useState('')
-
-    const onOff = () => setStatusBar(!statusBar)
-    const removeLocalStronge = () => localStorage.removeItem('user_token');
-    const setLocalStorage = (token: string) => localStorage.setItem('user_token', token)
-
-    useEffect( () =>{
-
-        const validarwToken = async() => {
-            const token = localStorage.getItem('user_token')
-            if(token){ 
-                const data = await Api.validateToken(token);
-                if(data) setUser(data);
-
-                else if(user == null || user == undefined) {
-                    removeLocalStronge();
-                    setUser(null)
-                }
-            }
-        };
-        validarwToken();
-
-        addEventListener('keypress', (e) => {
-            if(e.key == 'Enter') {
-                sing(nameUser, password);
-            }
-        });
-
-    })
-
-    async function sing(user: string, password: string) {
-        try{
-            const data: User = await Api.singUser(user, password)
-            if(data){
-                if(data.name == user && data.password == password){
-                    setLocalStorage(data.token);
-                    setUser(data);
-                    window.location.href = '/home';
-                }
-                return data;
-            }
-        }catch(err){ console.log(err); }
-    }
-
-    function logout() {
-        window.location.href = '/';
-        removeLocalStronge();
-        setUser(null);
-    }
-
-        return (
-            <TaagContext.Provider 
-            
-            value={{
-                sing,
-                user,
-                statusBar,
-                onOff,
-                setStatusBar,
-                logout,
-                nameUser,
-                setNameUser,
-                password,
-                setPassword,
-                open,
-                setOpen,
-                openModal,
-                setOpenModal
-            }}>
-
-                {children}
-            </TaagContext.Provider>
-        )
-}

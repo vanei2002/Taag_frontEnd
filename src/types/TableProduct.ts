@@ -1,4 +1,4 @@
-export interface TableProduct {
+export interface DataProduct {
    product: string;
    model: string;
    marca: string;

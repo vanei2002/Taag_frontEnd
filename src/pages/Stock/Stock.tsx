@@ -6,14 +6,14 @@ import {SiMicrosoftexcel} from "react-icons/si";
 
 import "./stock.sass";
 import TableProduct from "../../components/TableProduct/TableProduct";
-import { TaagClients } from "../../context/TaagClients";
+import { TaagContext } from "../../context/TaagContext";
 
 function Stock (){
 
-    const {tableProduct, setResultProduct} = useContext(TaagClients);
+    const {tableProduct, setResultProduct} = useContext(TaagContext);
 
     function searchStock(text: string){
-       const result = tableProduct.filter((product) => {
+       const result = tableProduct.filter((product: any) => {
             return product.product.toLowerCase().includes(text.toLowerCase());
         })
 

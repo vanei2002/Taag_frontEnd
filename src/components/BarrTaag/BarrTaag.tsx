@@ -3,7 +3,7 @@ import React, { useContext , useState } from "react";
 
 import './barrtaag.sass'
 import Perfil from '../../../public/perfil.jpg'
-import { TaagContext } from "../../context/ContextPage";
+import { TaagContext } from "../../context/TaagContext";
 
 import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
 import {BsFillArrowRightCircleFill} from 'react-icons/bs'

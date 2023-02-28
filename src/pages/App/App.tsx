@@ -1,5 +1,5 @@
 import React, {useState , useContext, useEffect} from 'react'
-import { TaagContext } from '../../context/ContextPage'
+import { TaagContext } from '../../context/TaagContext'
 import Taag from '../../../public//taag_logo.png'
 import { ButtonTaag } from '../../components/ButtonTaag/ButtonTaag'
 import InputText from '../../components/InputText/InputText'
@@ -10,8 +10,6 @@ import './app.sass'
 
 
 function App() {
-
-
 
   const [validInput, setValidInput] = useState(false)
   const [validUser, setValidUser] = useState(false)

@@ -7,14 +7,14 @@ import {SiMicrosoftexcel} from "react-icons/si";
 import "./newclients.sass";
 
 import { Link } from "react-router-dom";
-import { TaagClients } from "../../../context/TaagClients";
 import { DataClient } from "../../../types/DataClient";
+import { TaagContext } from "../../../context/TaagContext";
 
 
 function NewClients() {
 
     const [execlFile, setExeclFile] = useState<FileList | null>(null);
-    const {sendFile} = useContext(TaagClients);
+    const {sendFile} = useContext(TaagContext);
     
 
 
@@ -29,6 +29,7 @@ function NewClients() {
                 const lines = text?.toString().split("\n");
 
                 const [header, ...linesArray] = lines || [];
+                const arr = []
 
                 for (let line of linesArray) {
                     const splitFiles = line.split(",").map((item) => {
@@ -49,13 +50,15 @@ function NewClients() {
                         description: splitFiles[10],
                         responsible: splitFiles[11],
                     }
-
+                    
+                    arr.push(data);
                     sendFile(data);
                     
                     setInterval(() => {
                         document.location.reload();
                     } ,2000);
                 }
+                console.log(arr);
             };
             reader.readAsText(csvFile!);
         }

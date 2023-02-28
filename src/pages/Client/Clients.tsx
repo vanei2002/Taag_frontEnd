@@ -5,18 +5,18 @@ import  DashClients  from "../../components/DashClients/DashClients";
 import {SiMicrosoftexcel} from "react-icons/si";
 
 import { Link } from "react-router-dom";
-import { TaagClients } from "../../context/TaagClients";
 import { DataClient } from "../../types/DataClient";
-import { GetClients } from "../../server/clients";
 
 import "./clients.sass";
+import { TaagContext } from "../../context/TaagContext";
+import { Server } from "../../server/server";
 
 
 
 
 function Clients (){
 
-    const {setResult, clientsAll} = useContext(TaagClients);
+    const {setResult, clientsAll} = useContext(TaagContext);
 
     async function search(text: string){
         const result = await clientsAll.filter((row: DataClient) => {
@@ -26,7 +26,7 @@ function Clients (){
     }
 
     async function exportExcel(){
-        const file = await GetClients().findClients();  
+        const file = await Server().findClients();  
         const csv = await file.map((row: DataClient) => {
             return Object.values(row).join(",");
         }   
